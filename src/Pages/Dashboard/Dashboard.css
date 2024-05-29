@@ -1,0 +1,105 @@
+:root {
+  --background-color: #f3f1e7;
+  --primary-color: #4b3f2f;
+  --secondary-color: #6b5b4b;
+  --accent-color: #a47e3c;
+  --border-color: #c8b89e;
+  --muted-color: #b0a18b;
+  --nav-background-color: #ede8d4;
+  --title-background-color: #f3f1e7;
+  --profile-button-background-color: #ede8d4;
+  --hover-color: #8c6b3e;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 200px 1fr 150px;
+  grid-template-areas: "Nav Title Profile-Button";
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--title-background-color);
+}
+
+.nav {
+  grid-area: Nav;
+  padding: 20px;
+  background-color: var(--nav-background-color);
+  border-right: 1px solid var(--border-color);
+  height: calc(100vh - 40px);
+}
+
+.title {
+  grid-area: Title;
+  margin-left: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.profile-button {
+  grid-area: Profile-Button;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  background-color: var(--profile-button-background-color);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding-bottom: 14px;
+  color: var(--secondary-color);
+  cursor: pointer;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+li img {
+  margin-right: 10px;
+}
+
+li:hover {
+  color: var(--hover-color);
+}
+
+.sign-out {
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.sign-out:hover {
+  background-color: var(--hover-color);
+}
+
+.profile-circle {
+  width: 40px;
+  height: 40px;
+  background-color: var(--muted-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}
