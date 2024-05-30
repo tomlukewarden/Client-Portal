@@ -1,5 +1,5 @@
 
-import  CaseFile from './Pages/Case-File/CaseFile'
+import ImportantDates from './Pages/Important-Dates/ImportantDates'
 
 import './App.css'
 function App() {
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
- <CaseFile></CaseFile>
+  <ImportantDates></ImportantDates>
     </>
   )
 }

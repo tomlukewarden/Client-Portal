@@ -4,5 +4,8 @@
   border: 2px solid var(--border-color);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
   margin-bottom: 20px;
-  
+  margin-right: 200px;
+  margin-left: 25px;
+  padding-left: 40px;
 }
+
