@@ -1,12 +1,13 @@
 
-import Dashboard from './Pages/Dashboard/Dashboard'
+import  CaseFile from './Pages/Case-File/CaseFile'
+
 import './App.css'
 function App() {
 
 
   return (
     <>
-    <Dashboard></Dashboard>
+ <CaseFile></CaseFile>
     </>
   )
 }

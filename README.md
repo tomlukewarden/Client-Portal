@@ -8,6 +8,7 @@ The following technologies will be utilized in the development of this web appli
 
 - HTML & CSS
 - JavaScript
+- React
 - Node.js
 - Prisma
 - SQL
@@ -70,4 +71,4 @@ The following domain model represents the key entities and their relationships w
 
 ## Entity-Relationship Diagram (ERD)
 
-![ERD](assets/ERD.jpg)
+![ERD](assests/ERD.jpg)
