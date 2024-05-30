@@ -19,6 +19,7 @@
   font-size: 24px;
   font-weight: bold;
   color: var(--primary-color);
+  background-color: var(--title-background-color);
 }
 
 .profile-button {
@@ -69,7 +70,7 @@ li:hover {
 .profile-circle {
   width: 40px;
   height: 40px;
-  background-color: var(--muted-color);
+  background-color: var(--accent2-color);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -94,3 +95,33 @@ li:hover {
   font-size: 30px;
 }
 
+.box-container {
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  grid-template-areas: "Updates Space Solicitor";
+  justify-content: center;
+  margin-top: 80px;
+  gap: 20px;
+}
+
+.updates-box,
+.solicitor-box {
+  border: 1px solid var(--border-color);
+  padding: 50px;
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  background-color: var(--box-background-color); 
+}
+
+.updates-box:hover,
+.solicitor-box:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+}
+
+.updates-box {
+  grid-area: Updates;
+}
+
+.solicitor-box {
+  grid-area: Solicitor;
+}

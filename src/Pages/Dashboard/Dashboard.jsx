@@ -49,6 +49,16 @@ function Dashboard() {
               Your Outstanding Fees are:
             </span>
           </div>
+          <div className="box-container">
+          <div className="updates-box">
+            <h2>Latest Updates</h2>
+            <h4>POST COMPONENT HERE</h4>
+          </div>
+          <div className="solicitor-box">
+          <h2>Your Solicitors</h2>
+          <h4>SOLICITOR COMPONENT HERE</h4>
+          </div>
+          </div>
         </main>
       </section>
     </>
