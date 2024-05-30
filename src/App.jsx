@@ -1,13 +1,12 @@
 
-import ImportantDates from './Pages/Important-Dates/ImportantDates'
-
 import './App.css'
+import ImportantDates from './Pages/Important-Dates/ImportantDates'
 function App() {
 
 
   return (
     <>
-  <ImportantDates></ImportantDates>
+    <ImportantDates></ImportantDates>
     </>
   )
 }
