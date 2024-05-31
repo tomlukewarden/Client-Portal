@@ -1,4 +1,4 @@
-function Case (){
+function CaseItem (){
   return (
     <>
     <div className="case-container">
@@ -15,4 +15,4 @@ function Case (){
   ) 
 }
 
-export default Case
+export default CaseItem

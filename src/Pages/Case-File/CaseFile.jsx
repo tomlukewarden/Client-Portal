@@ -1,6 +1,6 @@
 import './CaseFile.css'
 import Nav from "../Dashboard/components/Nav";
-import Case from "./components/Case";
+import CaseItem from "./components/CaseItem";
 function CaseFile() {
   return (
     <>
@@ -14,7 +14,7 @@ function CaseFile() {
           </div>
           <h4 className="case-subheading">View Your Cases Below:</h4>
           <section className="case">
-            <Case></Case>
+            <CaseItem></CaseItem>
           </section>
         </main>
       </section>

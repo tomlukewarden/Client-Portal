@@ -1,12 +1,11 @@
 
 import './App.css'
-import ImportantDates from './Pages/Important-Dates/ImportantDates'
+import Profile from './Pages/Profile/Profile'
+
 function App() {
-
-
   return (
     <>
-    <ImportantDates></ImportantDates>
+ <Profile></Profile>
     </>
   )
 }
