@@ -1,11 +1,11 @@
 
 import './App.css'
-import Profile from './Pages/Profile/Profile'
+import Feedback from './Pages/Feedback/Feedback'
 
 function App() {
   return (
     <>
- <Profile></Profile>
+    <Feedback></Feedback>
     </>
   )
 }
