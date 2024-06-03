@@ -1,5 +1,5 @@
 import './CaseFile.css'
-import Nav from "../Dashboard/components/Nav";
+import Nav from "../../../Dashboard/components/Nav";
 import CaseItem from "./components/CaseItem";
 function CaseFile() {
   return (

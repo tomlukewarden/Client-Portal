@@ -13,10 +13,12 @@ function SignUp() {
 
   return (
     <>
-    <img className='logo-img' src="../../../assests/c&mLogo.jpg" alt="logo" />
+    
     <div className="signup-container">
+    <img className='logo-img' src="../../../assests/c&mLogo.jpg" alt="logo" />
       <div className="signup-box">
         <h2>Sign Up</h2>
+        <p>Already rgistered?<a href='#'>Log in here</a></p>
         <form onSubmit={handleSignUp}>
           <label htmlFor="email">Email Address:</label>
           <input
