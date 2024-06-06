@@ -1,20 +1,24 @@
 import { useState } from 'react';
-import './Login.css'
+import './Signup.css'
 
-function Login() {
+function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleLogin = (event) => {
     event.preventDefault();
-    // add actual logic for logging in here
+    // add sign up logic please
   };
 
   return (
-    <> <img src="../../../assests/c&mLogo.jpg" alt="logo" />
-    <div className="login-container">
-      <div className="login-box">
-        <h2>Login</h2>
+    <>
+    
+    <div className="signup-container">
+    <img className='logo-img' src="../../../assests/c&mLogo.jpg" alt="logo" />
+      <div className="signup-box">
+        <h2>Sign Up</h2>
+        <p>Not a member yet?<a href='#'>Sign up here</a></p>
         <form onSubmit={handleLogin}>
           <label htmlFor="email">Email Address:</label>
           <input
@@ -36,7 +40,17 @@ function Login() {
             required
           />
 
-          <input type="submit" value="Login" />
+          <label htmlFor="confirmPassword">Confirm Password:</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+
+          <input type="submit" value="Sign Up" />
         </form>
       </div>
     </div>
@@ -44,4 +58,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignUp;
