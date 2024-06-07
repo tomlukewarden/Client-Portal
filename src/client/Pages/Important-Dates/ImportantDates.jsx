@@ -1,6 +1,6 @@
 import Nav from "../Dashboard/components/Nav"
 import MyCalendar from "./components/MyCalendar"
-import '../client/Pages/Dashboard/Dashboard.css'
+import '../Dashboard/Dashboard.css'
 
 
 function ImportantDates (){

@@ -1,5 +1,5 @@
 import Nav from '../Dashboard/components/Nav'
-import '../client/Pages/Dashboard/Dashboard.css'
+import '../Dashboard/Dashboard.css'
 
 function Feedback () {
   return (
