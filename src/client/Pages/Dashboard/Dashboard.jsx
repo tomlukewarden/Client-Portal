@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import Nav from "./components/Nav";
-import "./Dashboard.css";
+
+import { useState, useEffect } from 'react';
+import Nav from './components/Nav';
+import './Dashboard.css';
 
 function Dashboard() {
   const [nextCourtDate, setNextCourtDate] = useState(null);
 
   useEffect(() => {
-    // Fetch or calculate the most recent court date
-    setNextCourtDate("June 10, 2024"); // Example date
+    setNextCourtDate('June 10, 2024'); // Example date
   }, []);
 
   return (
