@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model appointments {
+  id        Int       @id @default(autoincrement())
+  date      DateTime? @db.Date
+  time      DateTime? @db.Time(6)
+  location  String?   @db.VarChar(255)
+  client_id Int?
+  lawyer_id Int?
+  clients   clients?  @relation(fields: [client_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  lawyers   lawyers?  @relation(fields: [lawyer_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model cases {
+  id          Int         @id @default(autoincrement())
+  title       String      @db.VarChar(255)
+  description String?
+  status      String?     @db.VarChar(50)
+  client_id   Int?
+  lawyer_id   Int?
+  start_date  DateTime?   @db.Date
+  end_date    DateTime?   @db.Date
+  clients     clients?    @relation(fields: [client_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  lawyers     lawyers?    @relation(fields: [lawyer_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  documents   documents[]
+  invoices    invoices[]
+}
+
+model clients {
+  id           Int            @id @default(autoincrement())
+  name         String         @db.VarChar(100)
+  email        String         @db.VarChar(100)
+  phone        String?        @db.VarChar(20)
+  address      String?        @db.VarChar(255)
+  appointments appointments[]
+  cases        cases[]
+}
+
+model documents {
+  id            Int       @id @default(autoincrement())
+  title         String    @db.VarChar(255)
+  file_path     String    @db.VarChar(255)
+  case_id       Int?
+  uploaded_date DateTime? @db.Date
+  cases         cases?    @relation(fields: [case_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model invoices {
+  id          Int       @id @default(autoincrement())
+  amount      Decimal   @db.Decimal(10, 2)
+  date_issued DateTime? @db.Date
+  due_date    DateTime? @db.Date
+  case_id     Int?
+  cases       cases?    @relation(fields: [case_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model lawyers {
+  id             Int            @id @default(autoincrement())
+  name           String         @db.VarChar(100)
+  email          String         @db.VarChar(100)
+  phone          String?        @db.VarChar(20)
+  specialization String?        @db.VarChar(100)
+  appointments   appointments[]
+  cases          cases[]
+}
