@@ -2,6 +2,8 @@
 
 This project involves developing a client portal for Culley & McAlpine Solicitors, alongside making edits to their WordPress site. A staged version of the site is currently in progress and will be linked here upon completion.
 
+I recognised that there is a market for an online portal for clients to access information on their case and book appointments online. I offered this solution to future-proof their web presence, hoping to make the inevitible switch to paperless that a lot of firms have already started.
+
 ## Technology Stack
 
 The following technologies will be utilized in the development of this web application:

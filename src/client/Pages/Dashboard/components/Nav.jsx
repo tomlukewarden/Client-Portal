@@ -4,13 +4,13 @@ function Nav() {
       <div className="nav-container">
         <ul className="nav">
           <li>
-            <img src="assets/nav-bar-icons/sent.png" alt="Mail" width={37} />
+            <img src="" alt="Mail" width={37} />
             Mail
           </li>
 
           <li>
             <img
-              src="assets/nav-bar-icons/schedule.png"
+              src=""
               alt="Calendar"
               width={37}
             />
@@ -18,7 +18,7 @@ function Nav() {
           </li>
           <li>
             <img
-              src="assets/nav-bar-icons/folder.png"
+              src=''
               alt="Folder"
               width={37}
             />
@@ -26,7 +26,7 @@ function Nav() {
           </li>
           <li>
             <img
-              src="assets/nav-bar-icons/card-payment.png"
+              src=""
               alt="Card Payment"
               width={37}
             />
@@ -35,14 +35,14 @@ function Nav() {
 
           <li>
             <img
-              src="assets/nav-bar-icons/contact-mail.png"
+              src=""
               alt="Contact"
               width={37}
             />
             Contact
           </li>
           <li>
-            <img src="assets/nav-bar-icons/user.png" alt="Profile" width={37} />
+            <img src="" alt="Profile" width={37} />
             My Profile
           </li>
 
