@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import './Signup.css'
 
@@ -18,7 +19,7 @@ function Login() {
     <img className='logo-img' src="../../../assests/c&mLogo.jpg" alt="logo" />
       <div className="signup-box">
         <h2>Sign Up</h2>
-        <p>Not a member yet?<a href='#'>Sign up here</a></p>
+        <p>Not a member yet? <Link to="/signup">Sign up here</Link></p>
         <form onSubmit={handleLogin}>
           <label htmlFor="email">Email Address:</label>
           <input

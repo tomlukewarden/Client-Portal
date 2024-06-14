@@ -8,13 +8,17 @@ import Profile from '../src/client/Pages/Profile/Profile';
 import CaseFile from '../src/client/Pages/Case-File/CaseFile';
 import Contact from './client/Pages/Contact/Contact';
 import Fees from './client/Pages/Fees/Fees';
+import Login from './Login/Login'
+import SignUp from './Login/Signup';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Dashboard/>} />
+      <Route path="/" element={<Login/>}/>
+        <Route path="/dashboard" element={<Dashboard/>} />
+        <Route path="/signup" element={<SignUp/>}/>
         <Route path="/feedback" element={<Feedback/>} />
         <Route path="/important-dates" element={<ImportantDates/>} />
         <Route path='/fees' element={<Fees/>}/>
