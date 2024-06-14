@@ -1,0 +1,13 @@
+
+LOGIN LOGIC
+
+IF email AND password are recognised as a client account - redirect to CLIENT DASHBOARD
+IF email AND password are recognised as an admin account - redirect to ADMIN DASHBOARD
+Store with ENCRYPTION - so DATA IS SAFE
+IF email AND password are NOT recognised as an account - print NO USER FOUND
+
+SIGNUP LOGIC
+
+WHEN email AND password are submitted by form - SAVE INFORMATION TO DB with a UNIQUE ID
+
+

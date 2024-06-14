@@ -4,6 +4,8 @@ This project involves developing a client portal for Culley & McAlpine Solicitor
 
 I recognised that there is a market for an online portal for clients to access information on their case and book appointments online. I offered this solution to future-proof their web presence, hoping to make the inevitible switch to paperless that a lot of firms have already started.
 
+There is a file where I will work out logic with just words rather than code to help my own understanding of the path that is required, this will be deleted upon completion of the App.
+
 ## Technology Stack
 
 The following technologies will be utilized in the development of this web application:
