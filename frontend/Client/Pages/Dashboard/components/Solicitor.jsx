@@ -1,4 +1,4 @@
-import staff from '../../../Data/staff';
+import staff from '../../../../Data/staff';
 
 function SolicitorCard() {
   return (

@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
-import './SignupLogin.css'
+import PropTypes from 'prop-types';
+import './SignupLogin.css';
 
-function Login({setAuthToken}) {
+function Login({ setAuthToken }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -19,12 +19,10 @@ function Login({setAuthToken}) {
   };
 
   return (
-    <>
-    
     <div className="signup-container">
-    <img className='logo-img' src="../../../assests/c&mLogo.jpg" alt="logo" />
+      <img className='logo-img' src="/assets/c&mLogo.jpg" alt="logo" />
       <div className="signup-box">
-        <h2>Sign Up</h2>
+        <h2>Login</h2>
         <p>Not a member yet? <Link to="/signup">Sign up here</Link></p>
         <form onSubmit={handleLogin}>
           <label htmlFor="email">Email Address:</label>
@@ -47,22 +45,15 @@ function Login({setAuthToken}) {
             required
           />
 
-          <label htmlFor="confirmPassword">Confirm Password:</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-
           <input type="submit" value="Login" />
         </form>
       </div>
     </div>
-    </>
   );
 }
+
+Login.propTypes = {
+  setAuthToken: PropTypes.func.isRequired,
+};
 
 export default Login;
