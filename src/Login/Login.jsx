@@ -1,15 +1,21 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import './Signup.css'
+import axios from 'axios';
+import './SignupLogin.css'
 
-function Login() {
+function Login({setAuthToken}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
-    // add sign up logic please
+    try {
+      const response = await axios.post('/api/auth/login', { email, password });
+      setAuthToken(response.data.token);
+    } catch (error) {
+      console.error('Login failed', error);
+    }
   };
 
   return (
@@ -51,7 +57,7 @@ function Login() {
             required
           />
 
-          <input type="submit" value="Sign Up" />
+          <input type="submit" value="Login" />
         </form>
       </div>
     </div>
