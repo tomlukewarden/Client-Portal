@@ -1,51 +1,84 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import Validation from './LoginValidation'
+import Validation from './LoginValidation';
 import './SignupLogin.css';
 
-function Login() {
-  const [values, setValues] = useState({
-    email:'',
-    password:''
-  })
+function Login({ setAuthToken }) {
+  const [errors, setErrors] = useState({});
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [error, setError] = useState('');
 
-  const [errors, setErrors] = useState({})
-  const handleInput = (event) => {
-    setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
-  }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-  const handleLogin = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    setErrors(Validation(values))
+
+    const validationErrors = Validation(formData);
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      try {
+        const response = await fetch('/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (!response.ok) {
+          throw new Error('Invalid email or password');
+        }
+
+        const userData = await response.json();
+        console.log('User:', userData);
+
+        // Assuming the token is part of the response
+        setAuthToken(userData.token);
+
+        window.location.href = '/profile';
+      } catch (error) {
+        setError(error.message);
+      }
+    }
   };
 
   return (
     <div className="signup-container">
-      <img className='logo-img' src="/assets/c&mLogo.jpg" alt="logo" />
+      <img className="logo-img" src="/assets/c&mLogo.jpg" alt="logo" />
       <div className="signup-box">
         <h2>Login</h2>
-        <p>Not a member yet? <Link to="/signup">Sign up here</Link></p>
-        <form onSubmit={handleLogin}>
+        <p>
+          Not a member yet? <Link to="/signup">Sign up here</Link>
+        </p>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="email">Email Address:</label>
           <input
             type="email"
             id="email"
             name="email"
-            onChange={handleInput}
+            value={formData.email}
+            onChange={handleChange}
             required
           />
-          {errors.email && <span className='text-danger'>{errors.email}</span>}
+          {errors.email && <p className="error">{errors.email}</p>}
 
           <label htmlFor="password">Password:</label>
           <input
             type="password"
             id="password"
             name="password"
-            onChange={handleInput}
+            value={formData.password}
+            onChange={handleChange}
             required
           />
-           {errors.password && <span className='text-danger'>{errors.password}</span>}
+          {errors.password && <p className="error">{errors.password}</p>}
+
+          {error && <p className="error">{error}</p>}
 
           <input type="submit" value="Login" />
         </form>
