@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import Validation from './LoginValidation';
 import './SignupLogin.css';
 
 function Login({ setAuthToken }) {
@@ -14,10 +13,30 @@ function Login({ setAuthToken }) {
     setFormData({ ...formData, [name]: value });
   };
 
+  const validateForm = (data) => {
+    const newErrors = {};
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/;
+
+    if (!data.email) {
+      newErrors.email = 'Email should not be empty';
+    } else if (!emailPattern.test(data.email)) {
+      newErrors.email = 'Email did not match';
+    }
+
+    if (!data.password) {
+      newErrors.password = 'Password should not be empty';
+    } else if (!passwordPattern.test(data.password)) {
+      newErrors.password = 'Password did not match';
+    }
+
+    return newErrors;
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const validationErrors = Validation(formData);
+    const validationErrors = validateForm(formData);
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
@@ -37,7 +56,6 @@ function Login({ setAuthToken }) {
         const userData = await response.json();
         console.log('User:', userData);
 
-        // Assuming the token is part of the response
         setAuthToken(userData.token);
 
         window.location.href = '/profile';
@@ -49,7 +67,7 @@ function Login({ setAuthToken }) {
 
   return (
     <div className="signup-container">
-      <img className="logo-img" src="/assets/c&mLogo.jpg" alt="logo" />
+      <img className='logo-img' src="../assests/c&mLogo.jpg" alt="logo" />
       <div className="signup-box">
         <h2>Login</h2>
         <p>

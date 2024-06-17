@@ -1,6 +1,7 @@
 import Nav from "../Dashboard/components/Nav";
 import "../Dashboard/Dashboard.css";
 import "./Mailbox.css";
+import PropTypes from 'prop-types';
 
 function Mailbox() {
   const emails = [
@@ -37,5 +38,13 @@ function Email({ email }) {
     </div>
   );
 }
+
+Email.propTypes = {
+  email: PropTypes.shape({
+    sender: PropTypes.string.isRequired,
+    subject: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default Mailbox;
