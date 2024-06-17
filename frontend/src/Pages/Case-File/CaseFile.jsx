@@ -1,6 +1,7 @@
 import './CaseFile.css'
 import Nav from '../Dashboard/components/Nav'
-import CaseItem from "./components/CaseItem";
+import CaseItem from './components/CaseItem';
+
 function CaseFile() {
   return (
     <>

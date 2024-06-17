@@ -1,14 +1,14 @@
 
 import { Route, Routes } from 'react-router-dom';
-import Dashboard from './Client/Pages/Dashboard/Dashboard';
-import Feedback from '../src/client/Pages/Feedback/Feedback';
-import ImportantDates from './Client/Pages/ImportantDates';
-import Mailbox from '../src/client/Pages/Mail/Mailbox';
-import Profile from '../src/client/Pages/Profile/Profile';
-import CaseFile from './Client/Pages/Case-File/CaseFile';
-import Contact from '../src/client/Pages/Contact/Contact';
-import Fees from '../src/client/Pages/Fees/Fees';
-import Login from './Login/Login'
+import Dashboard from './Pages/Dashboard/Dashboard';
+import Feedback from './Pages/Feedback/Feedback';
+import ImportantDates from './Pages/Important-Dates/ImportantDates'
+import Mailbox from './Pages/Mail/Mailbox';
+import Profile from './Pages/Profile/Profile';
+import CaseFile from './Pages/Case-File/CaseFile';
+import Contact from './Pages/Contact/Contact';
+import Fees from './Pages/Fees/Fees';
+import Login from './Login/Login';
 import SignUp from './Login/Signup';
 import './App.css';
 

@@ -1,21 +1,23 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import axios from 'axios';
 import PropTypes from 'prop-types';
+import Validation from './LoginValidation'
 import './SignupLogin.css';
 
-function Login({ setAuthToken }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+function Login() {
+  const [values, setValues] = useState({
+    email:'',
+    password:''
+  })
 
-  const handleLogin = async (event) => {
+  const [errors, setErrors] = useState({})
+  const handleInput = (event) => {
+    setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
+  }
+
+  const handleLogin = (event) => {
     event.preventDefault();
-    try {
-      const response = await axios.post('/api/auth/login', { email, password });
-      setAuthToken(response.data.token);
-    } catch (error) {
-      console.error('Login failed', error);
-    }
+    setErrors(Validation(values))
   };
 
   return (
@@ -30,20 +32,20 @@ function Login({ setAuthToken }) {
             type="email"
             id="email"
             name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleInput}
             required
           />
+          {errors.email && <span className='text-danger'>{errors.email}</span>}
 
           <label htmlFor="password">Password:</label>
           <input
             type="password"
             id="password"
             name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handleInput}
             required
           />
+           {errors.password && <span className='text-danger'>{errors.password}</span>}
 
           <input type="submit" value="Login" />
         </form>

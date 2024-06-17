@@ -1,15 +1,24 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import Validation from './SignupValidation';
 import './SignupLogin.css'
 
 function SignUp() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const [values, setValues] = useState({
+    name:'',
+    email:'',
+    password:''
+  })
+
+  const [errors, setErrors] = useState({})
+  const handleInput = (event) => {
+    setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
+  }
 
   const handleSignUp = (event) => {
     event.preventDefault();
-    // add sign up logic please
+    setErrors(Validation(values))
   };
 
   return (
@@ -26,31 +35,40 @@ function SignUp() {
             type="email"
             id="email"
             name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleInput}
             required
           />
+          {errors.email && <span className='text-danger'>{errors.email}</span>}
+
+          <label htmlFor="name">Full Name</label>
+          <input 
+          type="text"
+          id='name'
+          name='name'
+          onChange={handleInput}
+          required
+           />
+           {errors.name && <span className='text-danger'>{errors.name}</span>}
 
           <label htmlFor="password">Password:</label>
           <input
             type="password"
             id="password"
             name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handleInput}
             required
           />
+          {errors.password && <span className='text-danger'>{errors.password}</span>}
 
           <label htmlFor="confirmPassword">Confirm Password:</label>
           <input
             type="password"
             id="confirmPassword"
             name="confirmPassword"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={handleInput}
             required
           />
-
+        {errors.password && <span className='text-danger'>{errors.password}</span>}
           <input type="submit" value="Sign Up" />
         </form>
       </div>
