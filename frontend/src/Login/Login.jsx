@@ -32,6 +32,7 @@ function Login({ setAuthToken }) {
 
     return newErrors;
   };
+  const API_BASE_URL = 'http://localhost:3030';
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -41,7 +42,7 @@ function Login({ setAuthToken }) {
 
     if (Object.keys(validationErrors).length === 0) {
       try {
-        const response = await fetch('/api/login', {
+        const response = await fetch(`${API_BASE_URL}/users/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

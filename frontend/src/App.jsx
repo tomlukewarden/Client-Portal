@@ -13,10 +13,13 @@ import SignUp from './Login/Signup';
 import './App.css';
 
 function App() {
+  const setAuthToken = (token) => {
+    console.log('Setting auth token:', token);
+  }
   return (
     <div className="App">
       <Routes>
-      <Route path="/" element={<Login/>}/>
+      <Route path="/" element={<Login setAuthToken={setAuthToken}/>}/>
         <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/feedback" element={<Feedback/>} />

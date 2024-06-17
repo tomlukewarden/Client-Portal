@@ -47,6 +47,8 @@ function SignUp() {
     return newErrors;
   };
 
+  const API_BASE_URL = 'http://localhost:3030';
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -55,7 +57,7 @@ function SignUp() {
 
     if (Object.keys(validationErrors).length === 0) {
       try {
-        const response = await fetch('/api/signup', {
+        const response = await fetch(`${API_BASE_URL}/users/signup`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
