@@ -50,13 +50,13 @@ function SignUp() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     const validationErrors = validateForm(formData);
     setErrors(validationErrors);
-
+  
     if (Object.keys(validationErrors).length === 0) {
       try {
-        const response = await fetch(`/users/signup`, {
+        const response = await fetch('/users/signup', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -67,19 +67,19 @@ function SignUp() {
             password: formData.password,
           }),
         });
-
+  
         if (!response.ok) {
           const data = await response.json();
-          throw new Error(data.error);
+          throw new Error(data.error || 'Sign up failed');
         }
-
+  
         window.location.href = '/login';
       } catch (error) {
         setError(error.message || 'Sign up failed');
       }
     }
   };
-
+  
   return (
     <div className="signup-container">
       <img className="logo-img" src="../assets/c&mLogo.jpg" alt="logo" />
