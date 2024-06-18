@@ -6,7 +6,7 @@ function SignUp() {
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     email: '',
-    fullName: '', // Corrected field name
+    fullName: '',
     password: '',
     confirmPassword: '',
   });
@@ -47,16 +47,17 @@ function SignUp() {
     return newErrors;
   };
 
+  const API_BASE_URL = 'http://localhost:3030'; // Replace with your actual backend URL
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     const validationErrors = validateForm(formData);
     setErrors(validationErrors);
-  
+
     if (Object.keys(validationErrors).length === 0) {
       try {
-        const response = await fetch('/users/signup', {
+        const response = await fetch(`${API_BASE_URL}/clients/signup`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -67,19 +68,19 @@ function SignUp() {
             password: formData.password,
           }),
         });
-  
+
         if (!response.ok) {
           const data = await response.json();
           throw new Error(data.error || 'Sign up failed');
         }
-  
-        window.location.href = '/login';
+
+        window.location.href = '/login'; // Redirect to login page on successful signup
       } catch (error) {
         setError(error.message || 'Sign up failed');
       }
     }
   };
-  
+
   return (
     <div className="signup-container">
       <img className="logo-img" src="../assets/c&mLogo.jpg" alt="logo" />
@@ -100,16 +101,16 @@ function SignUp() {
           />
           {errors.email && <p className="error">{errors.email}</p>}
 
-          <label htmlFor="fullName">Full Name:</label>
+          <label htmlFor="name">Full Name:</label>
           <input
             type="text"
-            id="fullName"
-            name="fullName"
-            value={formData.fullName}
+            id="name"
+            name="name"
+            value={formData.name}
             onChange={handleChange}
             required
           />
-          {errors.fullName && <p className="error">{errors.fullName}</p>}
+          {errors.name && <p className="error">{errors.name}</p>}
 
           <label htmlFor="password">Password:</label>
           <input

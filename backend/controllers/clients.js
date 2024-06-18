@@ -4,51 +4,53 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 const SALT_ROUNDS = 10;
 
-export const loginUser = async (email, password) => {
+export const loginClient = async (email, password) => {
   try {
-    const user = await prisma.user.findUnique({
+    const client = await prisma.clients.findUnique({
       where: { email },
     });
 
-    if (!user || !(await bcrypt.compare(password, user.password))) {
+    if (!client || !(await bcrypt.compare(password, client.password))) {
       throw new Error('Invalid email or password');
     }
 
-    return user;
+    return client;
   } catch (error) {
     throw new Error('Failed to login: ' + error.message);
   }
 };
 
-export const signUpUser = async (email, fullName, password) => {
-  console.log('Received data:', { email, fullName, password }); 
+export const signUpClient = async (email, name, password) => {
+  console.log('Received data:', { email, name, password }); 
   try {
-    if (!email || !fullName || !password) {
-      throw new Error('Email, full name, and password are required');
+    if (!email || !name || !password) {
+      throw new Error('Email, full name and password are required');
     }
 
-    const existingUser = await prisma.user.findUnique({
+    const existingClient = await prisma.clients.findUnique({
       where: { email },
     });
 
-    if (existingUser) {
+    if (existingClient) {
       throw new Error('User already exists');
     }
 
     const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
 
-    const newUser = await prisma.user.create({
+    const newClient = await prisma.clients.create({
       data: {
-        fullName,
+        name,
         email,
         password: hashedPassword,
       },
     });
 
-    return newUser;
+    return newClient;
   } catch (error) {
     throw new Error('Failed to sign up: ' + error.message);
   } finally {
     await prisma.$disconnect();
   }
 };
+
+export default prisma;
