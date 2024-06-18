@@ -1,14 +1,11 @@
-import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcrypt';
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
+const SALT_ROUNDS = 10;
 
 export const loginUser = async (email, password) => {
   try {
-    if (!email || !password) {
-      throw new Error('Email and password are required');
-    }
-
     const user = await prisma.user.findUnique({
       where: { email },
     });
@@ -20,15 +17,14 @@ export const loginUser = async (email, password) => {
     return user;
   } catch (error) {
     throw new Error('Failed to login: ' + error.message);
-  } finally {
-    await prisma.$disconnect();
   }
 };
 
-export const signinUser = async (fullName, email, password) => {
+export const signUpUser = async (email, fullName, password) => {
+  console.log('Received data:', { email, fullName, password }); 
   try {
-    if (!fullName || !email || !password) {
-      throw new Error('Full name, email, and password are required');
+    if (!email || !fullName || !password) {
+      throw new Error('Email, full name, and password are required');
     }
 
     const existingUser = await prisma.user.findUnique({
@@ -39,8 +35,7 @@ export const signinUser = async (fullName, email, password) => {
       throw new Error('User already exists');
     }
 
-    const saltRounds = parseInt(import.meta.env.VITE_BCRYPT_SALT_ROUNDS) || 8;
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
 
     const newUser = await prisma.user.create({
       data: {

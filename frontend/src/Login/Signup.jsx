@@ -6,7 +6,7 @@ function SignUp() {
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     email: '',
-    name: '',
+    fullName: '', // Corrected field name
     password: '',
     confirmPassword: '',
   });
@@ -28,8 +28,8 @@ function SignUp() {
       newErrors.email = 'Email did not match';
     }
 
-    if (!data.name) {
-      newErrors.name = 'Full name should not be empty';
+    if (!data.fullName) {
+      newErrors.fullName = 'Full name should not be empty';
     }
 
     if (!data.password) {
@@ -47,7 +47,6 @@ function SignUp() {
     return newErrors;
   };
 
-  const API_BASE_URL = 'http://localhost:3030';
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -57,12 +56,16 @@ function SignUp() {
 
     if (Object.keys(validationErrors).length === 0) {
       try {
-        const response = await fetch(`${API_BASE_URL}/users/signup`, {
+        const response = await fetch(`/users/signup`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify({
+            email: formData.email,
+            fullName: formData.fullName,
+            password: formData.password,
+          }),
         });
 
         if (!response.ok) {
@@ -78,66 +81,64 @@ function SignUp() {
   };
 
   return (
-    <>
-      <div className="signup-container">
-        <img className="logo-img" src="../assets/c&mLogo.jpg" alt="logo" />
-        <div className="signup-box">
-          <h2>Sign Up</h2>
-          <p>
-            Already registered? <Link to="/">Log in here</Link>
-          </p>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="email">Email Address:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            {errors.email && <p className="error">{errors.email}</p>}
+    <div className="signup-container">
+      <img className="logo-img" src="../assets/c&mLogo.jpg" alt="logo" />
+      <div className="signup-box">
+        <h2>Sign Up</h2>
+        <p>
+          Already registered? <Link to="/">Log in here</Link>
+        </p>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="email">Email Address:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          {errors.email && <p className="error">{errors.email}</p>}
 
-            <label htmlFor="name">Full Name:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-            {errors.name && <p className="error">{errors.name}</p>}
+          <label htmlFor="fullName">Full Name:</label>
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            value={formData.fullName}
+            onChange={handleChange}
+            required
+          />
+          {errors.fullName && <p className="error">{errors.fullName}</p>}
 
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-            {errors.password && <p className="error">{errors.password}</p>}
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          {errors.password && <p className="error">{errors.password}</p>}
 
-            <label htmlFor="confirmPassword">Confirm Password:</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              required
-            />
-            {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
+          <label htmlFor="confirmPassword">Confirm Password:</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            required
+          />
+          {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
 
-            {error && <p className="error">{error}</p>}
+          {error && <p className="error">{error}</p>}
 
-            <input type="submit" value="Sign Up" />
-          </form>
-        </div>
+          <input type="submit" value="Sign Up" />
+        </form>
       </div>
-    </>
+    </div>
   );
 }
 

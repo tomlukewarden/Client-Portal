@@ -1,9 +1,9 @@
-import express from "express";
-import { signUpUser, loginUser } from '../controllers/users.js';
+import express from 'express';
+import { signUpUser, loginUser } from '../controllers/users.js'; // Correct path
 
-const router = express.Router()
+const usersRouter = express.Router();
 
-router.post('/login', async (req, res) => {
+usersRouter.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await loginUser(email, password);
@@ -13,12 +13,14 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.post('/signup', async (req, res) => {
-  const { email, password } = req.body;
+usersRouter.post('/signup', async (req, res) => {
+  const { email, fullName, password } = req.body;
   try {
-    const newUser = await signUpUser(email, password);
+    const newUser = await signUpUser(email, fullName, password);
     res.status(201).json(newUser);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 });
+
+export default usersRouter;
