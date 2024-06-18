@@ -4,7 +4,6 @@ import CaseItem from './components/CaseItem';
 
 function CaseFile() {
   return (
-    <>
       <section className="container">
         <Nav></Nav>
         <main className="main-container">
@@ -19,7 +18,6 @@ function CaseFile() {
           </section>
         </main>
       </section>
-    </>
   );
 }
 

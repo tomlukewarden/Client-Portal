@@ -1,6 +1,5 @@
-
-import { Link } from 'react-router-dom';
-import '../Dashboard.css';
+import { Link } from "react-router-dom";
+import "../Dashboard.css";
 
 function Nav() {
   return (
@@ -8,8 +7,8 @@ function Nav() {
       <ul className="nav">
         <li>
           <Link to="/">
-          <img src="./nav-bar-icons/home.png" alt="Home" width={37} />
-          Dashboard
+            <img src="./nav-bar-icons/home.png" alt="Home" width={37} />
+            Dashboard
           </Link>
         </li>
         <li>
@@ -26,13 +25,17 @@ function Nav() {
         </li>
         <li>
           <Link to="/case-file">
-            <img src='./nav-bar-icons/folder.png' alt="Folder" width={37} />
+            <img src="./nav-bar-icons/folder.png" alt="Folder" width={37} />
             Case File
           </Link>
         </li>
         <li>
           <Link to="/fees">
-            <img src="./nav-bar-icons/card-payment.png" alt="Card Payment" width={37} />
+            <img
+              src="./nav-bar-icons/card-payment.png"
+              alt="Card Payment"
+              width={37}
+            />
             Fees
           </Link>
         </li>

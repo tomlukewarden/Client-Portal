@@ -5,7 +5,6 @@ import '../Dashboard/Dashboard.css'
 
 function ImportantDates (){
   return (
-    <>
     <section className="container">
         <Nav></Nav>
         <main className="main-container">
@@ -17,7 +16,6 @@ function ImportantDates (){
           <MyCalendar></MyCalendar>
           </main>
           </section>
-          </>
   )
 }
 

@@ -20,8 +20,8 @@ function Mailbox() {
           <div className="profile-circle"></div>
         </div>
         <div className="mailbox">
-          {emails.map((email, index) => (
-            <Email key={index} email={email} />
+          {emails.map((email) => (
+            <Email key={email.id} email={email} />
           ))}
         </div>
       </main>
