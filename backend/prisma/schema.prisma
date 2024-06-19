@@ -35,8 +35,7 @@ model cases {
 
 model clients {
   id           Int            @id @default(autoincrement())
-  firstName    String         @db.VarChar(50)
-  lastName     String         @db.VarChar(50)
+  name         String         @db.VarChar(100)
   email        String         @db.VarChar(100)
   phone        String?        @db.VarChar(20)
   address      String?        @db.VarChar(255)
@@ -70,13 +69,4 @@ model lawyers {
   specialization String?        @db.VarChar(100)
   appointments   appointments[]
   cases          cases[]
-}
-
-model admins {
-  id           Int       @id @default(autoincrement())
-  firstName    String    @db.VarChar(50)
-  lastName     String    @db.VarChar(50)
-  email        String    @db.VarChar(100)
-  phone        String?   @db.VarChar(20)
-  address      String?   @db.VarChar(255)
 }
