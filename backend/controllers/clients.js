@@ -20,11 +20,10 @@ export const loginClient = async (email, password) => {
   }
 };
 
-export const signUpClient = async (email, name, password) => {
-  console.log('Received data:', { email, name, password }); 
+export const signUpClient = async (email, firstName, lastName, address, password) => {
   try {
-    if (!email || !name || !password) {
-      throw new Error('Email, full name and password are required');
+    if (!email || !firstName || !lastName || !address || !password) {
+      throw new Error('Email, first name, last name, address, and password are required');
     }
 
     const existingClient = await prisma.clients.findUnique({
@@ -39,8 +38,10 @@ export const signUpClient = async (email, name, password) => {
 
     const newClient = await prisma.clients.create({
       data: {
-        name,
+        firstName,
+        lastName,
         email,
+        address,
         password: hashedPassword,
       },
     });

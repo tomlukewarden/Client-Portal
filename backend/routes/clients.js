@@ -14,13 +14,18 @@ clientsRouter.post('/login', async (req, res) => {
 });
 
 clientsRouter.post('/signup', async (req, res) => {
-  const { email, name, password } = req.body;
+  const { email, firstName, lastName, address, password, confirmPassword } = req.body;
+
+  if (password !== confirmPassword) {
+    return res.status(400).json({ error: 'Passwords do not match' });
+  }
+
   try {
-    const newClient = await signUpClient(email, name, password);
+    const newClient = await signUpClient(email, firstName, lastName, address, password);
     res.status(201).json(newClient);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
-});
+})
 
 export default clientsRouter;

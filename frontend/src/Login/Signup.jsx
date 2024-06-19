@@ -3,70 +3,78 @@ import { useState } from 'react';
 import './SignupLogin.css';
 
 function SignUp() {
-  const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     email: '',
-    fullName: '',
+    firstName: '',
+    lastName: '',
+    address: '',
     password: '',
     confirmPassword: '',
   });
+  const [errors, setErrors] = useState({});
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    // Clear validation error message when user starts typing
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: '' });
+    }
   };
 
-  const validateForm = (data) => {
+  const validateForm = () => {
     const newErrors = {};
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/;
 
-    if (!data.email) {
+    if (!formData.email) {
       newErrors.email = 'Email should not be empty';
-    } else if (!emailPattern.test(data.email)) {
-      newErrors.email = 'Email did not match';
+    } else if (!emailPattern.test(formData.email)) {
+      newErrors.email = 'Email is invalid';
     }
 
-    if (!data.fullName) {
-      newErrors.fullName = 'Full name should not be empty';
+    if (!formData.firstName) {
+      newErrors.firstName = 'First name should not be empty';
     }
 
-    if (!data.password) {
+    if (!formData.lastName) {
+      newErrors.lastName = 'Last name should not be empty';
+    }
+
+    if (!formData.address) {
+      newErrors.address = 'Address should not be empty';
+    }
+
+    if (!formData.password) {
       newErrors.password = 'Password should not be empty';
-    } else if (!passwordPattern.test(data.password)) {
-      newErrors.password = 'Password did not match';
+    } else if (!passwordPattern.test(formData.password)) {
+      newErrors.password = 'Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one number';
     }
 
-    if (!data.confirmPassword) {
+    if (!formData.confirmPassword) {
       newErrors.confirmPassword = 'Confirm password should not be empty';
-    } else if (data.password !== data.confirmPassword) {
+    } else if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = 'Passwords do not match';
     }
 
-    return newErrors;
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
-  const API_BASE_URL = 'http://localhost:3030'; // Replace with your actual backend URL
+  const API_BASE_URL = 'http://localhost:3030';
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const validationErrors = validateForm(formData);
-    setErrors(validationErrors);
-
-    if (Object.keys(validationErrors).length === 0) {
+    if (validateForm()) {
       try {
         const response = await fetch(`${API_BASE_URL}/clients/signup`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            email: formData.email,
-            fullName: formData.fullName,
-            password: formData.password,
-          }),
+          body: JSON.stringify(formData),
         });
 
         if (!response.ok) {
@@ -74,7 +82,7 @@ function SignUp() {
           throw new Error(data.error || 'Sign up failed');
         }
 
-        window.location.href = '/login'; // Redirect to login page on successful signup
+        window.location.href = '/login'; // Redirect on successful signup
       } catch (error) {
         setError(error.message || 'Sign up failed');
       }
@@ -101,16 +109,38 @@ function SignUp() {
           />
           {errors.email && <p className="error">{errors.email}</p>}
 
-          <label htmlFor="name">Full Name:</label>
+          <label htmlFor="firstName">First Name:</label>
           <input
             type="text"
-            id="name"
-            name="name"
-            value={formData.name}
+            id="firstName"
+            name="firstName"
+            value={formData.firstName}
             onChange={handleChange}
             required
           />
-          {errors.name && <p className="error">{errors.name}</p>}
+          {errors.firstName && <p className="error">{errors.firstName}</p>}
+
+          <label htmlFor="lastName">Last Name:</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+            required
+          />
+          {errors.lastName && <p className="error">{errors.lastName}</p>}
+
+          <label htmlFor="address">Address:</label>
+          <input
+            type="text"
+            id="address"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+            required
+          />
+          {errors.address && <p className="error">{errors.address}</p>}
 
           <label htmlFor="password">Password:</label>
           <input
