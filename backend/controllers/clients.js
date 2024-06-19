@@ -4,21 +4,31 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 const SALT_ROUNDS = 10;
 
+
 export const loginClient = async (email, password) => {
   try {
-    const client = await prisma.clients.findUnique({
+    const client = await prisma.clients.findOne({
       where: { email },
     });
 
-    if (!client || !(await bcrypt.compare(password, client.password))) {
+    if (!client) {
       throw new Error('Invalid email or password');
     }
 
-    return client;
+    const passwordMatch = await bcrypt.compare(password, client.password);
+    if (!passwordMatch) {
+      throw new Error('Invalid email or password');
+    }
+
+    const { password: clientPassword, ...clientData } = client;
+    return clientData;
   } catch (error) {
     throw new Error('Failed to login: ' + error.message);
+  } finally {
+    await prisma.$disconnect();
   }
 };
+
 
 export const signUpClient = async (email, firstName, lastName, address, password) => {
   try {

@@ -1,5 +1,5 @@
 import request from 'supertest'
-import app from '/backend/server.js'
+import app from '../backend/server.js'
 
 describe('Routes', () => {
   it('should login with correct credentials via route', async () => {
