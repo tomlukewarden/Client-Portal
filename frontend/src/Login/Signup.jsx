@@ -82,7 +82,7 @@ function SignUp() {
           throw new Error(data.error || 'Sign up failed');
         }
 
-        window.location.href = '/login'; // Redirect on successful signup
+        window.location.href = '/login'; 
       } catch (error) {
         setError(error.message || 'Sign up failed');
       }

@@ -17,4 +17,9 @@ describe('Routes', () => {
       .send({ email: 'test@example.com', password: 'wrongpassword' })
       .expect(401);
   });
+  it('should throw an error if the client already exists', async () => {
+    await request(app)
+    .post('/client/singup')
+    .send({email:'test@example.com',password:'Password1'})
+  })
 })
