@@ -1,7 +1,7 @@
 .container {
   display: grid;
-  grid-template-columns: 170px 1fr;
-  padding: 20px;
+  grid-template-columns: 200px 1fr;
+  padding: 0;
   border-bottom: 1px solid var(--border-color);
   background-color: var(--title-background-color);
 }
@@ -10,8 +10,10 @@
   padding: 20px;
   background-color: var(--nav-background-color);
   border-right: 1px solid var(--border-color);
-  width: 120px;
-  height: calc(100vh - 80px);
+  width: 170px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+  position: fixed;
 }
 
 .title {
@@ -20,6 +22,7 @@
   font-weight: bold;
   color: var(--primary-color);
   background-color: var(--title-background-color);
+  padding: 20px;
 }
 
 .profile-button {
@@ -27,6 +30,8 @@
   align-items: center;
   justify-content: flex-end;
   gap: 10px;
+  padding: 20px;
+  background-color: var(--title-background-color);
 }
 
 ul {
@@ -37,11 +42,11 @@ ul {
 
 li {
   padding: 10px 0;
-  padding-bottom: 14px;
-  color: var(--secondary-color);
+  color: #f1f1f1;
   cursor: pointer;
   display: flex;
   align-items: center;
+  transition: color 0.3s, background-color 0.3s;
 }
 
 li img {
@@ -50,17 +55,21 @@ li img {
 
 li:hover {
   color: var(--hover-color);
+  background-color: #32373c;
 }
 
 .sign-out {
   background-color: var(--accent-color);
   color: #fff;
   border: none;
-  padding: 8px 16px;
+  padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
+  margin: 20px;
   transition: background-color 0.3s;
+  display: inline-block;
+  text-align: center;
 }
 
 .sign-out:hover {
@@ -85,37 +94,44 @@ li:hover {
   margin-top: 30px;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.582); 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
+  background-color: var(--box-background-color); 
+  border-radius: 4px;
 }
 
 .date-banner,
 .fee-banner {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   display: block;
-  font-size: 30px;
+  font-size: 24px;
+  color: var(--primary-color);
 }
 
 .box-container {
   display: grid;
-  grid-template-columns: repeat(3, 300px);
-  grid-template-areas: "Updates Space Solicitor";
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-areas: 
+    "Updates Updates Updates"
+    "Solicitor Solicitor Solicitor";
   justify-content: center;
-  margin-top: 80px;
+  margin-top: 30px;
   gap: 20px;
+  padding: 20px;
 }
 
 .updates-box,
 .solicitor-box {
   border: 1px solid var(--border-color);
-  padding: 50px;
-  border-radius: 10px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  padding: 30px;
+  border-radius: 4px; 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
   background-color: var(--box-background-color); 
+  transition: box-shadow 0.3s;
 }
 
 .updates-box:hover,
 .solicitor-box:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 
 .updates-box {

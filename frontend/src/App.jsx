@@ -1,13 +1,13 @@
 
 import { Route, Routes } from 'react-router-dom';
-import Dashboard from './Pages/Dashboard/Dashboard';
-import Feedback from './Pages/Feedback/Feedback';
-import ImportantDates from './Pages/Important-Dates/ImportantDates'
-import Mailbox from './Pages/Mail/Mailbox';
-import Profile from './Pages/Profile/Profile';
-import CaseFile from './Pages/Case-File/CaseFile';
-import Contact from './Pages/Contact/Contact';
-import Fees from './Pages/Fees/Fees';
+import Dashboard from './Pages/client/Dashboard/Dashboard';
+import Feedback from './Pages/client/Feedback/Feedback';
+import ImportantDates from './Pages/client/Important-Dates/ImportantDates'
+import Mailbox from './Pages/client/Mail/Mailbox';
+import Profile from './Pages/client/Profile/Profile';
+import CaseFile from './Pages/client/Case-File/CaseFile';
+import Contact from './Pages/client/Contact/Contact';
+import Fees from './Pages/client/Fees/Fees';
 import Login from './Login/Login';
 import SignUp from './Login/Signup';
 import './App.css';
@@ -19,8 +19,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
-      <Route path="/" element={<Login setAuthToken={setAuthToken}/>}/>
-        <Route path="/dashboard" element={<Dashboard/>} />
+      <Route path="/login" element={<Login setAuthToken={setAuthToken}/>}/>
+        <Route path="/" element={<Dashboard/>} />
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/feedback" element={<Feedback/>} />
         <Route path="/important-dates" element={<ImportantDates/>} />
