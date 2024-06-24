@@ -1,56 +1,48 @@
 const staff = [
   {
-    firstName: "Billy",
-    lastName: "Warden",
+    name: "Billy",
     role: "Partner",
     email: "b.warden@culleymcalpine.co.uk",
-    specialisation:["Civil", "Wills & POA", "Conveyencing"]
+    specialisation:["Civil", " Wills & POA ", " Conveyencing"]
   },
   {
-    firstName: "Pauline",
-    lastName: "Cullerton",
+    name: "Pauline",
     role: "Partner",
     email: "p.cullerton@culleymcalpine.co.uk",
     specialisation: "Criminal"
   },
   {
-    firstName: "Linda",
-    lastName: "Clark",
+    name: "Linda",
     role: "Solicitor",
     email: "l.clark@culleymcalpine.co.uk",
-    specialisation: ["Criminal", "Civil"]
+    specialisation: ["Criminal ", " Civil"]
   },
   {
-    firstName: "Cheryl",
-    lastName: "McKnight",
+    name: "Cheryl McKnight",
     role: "Solicitor",
     email: "c.mcknight@culleymcalpine.co.uk",
     specialisation: "Civil"
   },
   {
-    firstName: "Bethany",
-    lastName: "Downham",
+    name: "Bethany Downham",
     role: "Trainee",
     email: "b.downham@culleymcalpine.co.uk",
     specialisation: "Criminal"
   },
   {
-    firstName: "Janice",
-    lastName: "Smith",
+    name: "Janice",
     role: "Paralegal",
     email: "j.smith@culleymcalpine.co.uk",
-    specialisation: ["Conveyencing", "Wills & POA"]
+    specialisation: ["Conveyencing", " Wills & POA"]
   },
   {
-    firstName: "Megan",
-    lastName: "Watson",
+    name: "Megan",
     role: "Paralegal",
     email: "w.watson@culleymcalpine.co.uk",
     specialisation: "Criminal"
   },
   {
-    firstName: "Freya",
-    lastName: "Masson",
+    name: "Freya",
     role: "Paralegal",
     email: "f.masson@culleymcalpine.co.uk",
     specialisation: "Civil"

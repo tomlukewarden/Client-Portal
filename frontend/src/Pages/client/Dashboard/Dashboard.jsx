@@ -1,19 +1,21 @@
-
-import { useState, useEffect } from 'react';
-import Nav from './components/Nav';
-import GridLayout from 'react-grid-layout';
-import './Dashboard.css';
+import { useState, useEffect } from "react";
+import Nav from "./components/Nav";
+import GridLayout from "react-grid-layout";
+import "./Dashboard.css";
+import staff from "../../../Data/staff";
 
 function Dashboard() {
   const [nextCourtDate, setNextCourtDate] = useState(null);
+  const [outstandingFees, setOutstandingFees] = useState(0);
 
   useEffect(() => {
-    setNextCourtDate('June 10, 2024'); // Example date
+    setNextCourtDate("June 10, 2024");
+    setOutstandingFees(500);
   }, []);
 
   const layout = [
-    { i: 'updates-box', x: 0, y: 0, w: 1, h: 2 },
-    { i: 'solicitor-box', x: 1, y: 0, w: 1, h: 2 },
+    { i: "updates-box", x: 0, y: 0, w: 1, h: 2 },
+    { i: "solicitor-box", x: 1, y: 0, w: 1, h: 2 },
   ];
 
   return (
@@ -30,10 +32,16 @@ function Dashboard() {
             Your Next Court Date is: {nextCourtDate}
           </span>
           <span className="fee-banner">
-            Your Outstanding Fees are: {/* Add fee logic here */}
+            Your Outstanding Fees are: {outstandingFees}
           </span>
         </div>
-        <GridLayout className="layout" layout={layout} cols={2} rowHeight={100} width={1200}>
+        <GridLayout
+          className="layout"
+          layout={layout}
+          cols={2}
+          rowHeight={100}
+          width={1200}
+        >
           <div key="updates-box" className="box">
             <div className="updates-box">
               <h2>Latest Updates</h2>
@@ -43,7 +51,16 @@ function Dashboard() {
           <div key="solicitor-box" className="box">
             <div className="solicitor-box">
               <h2>Your Solicitors</h2>
-              {/* Implement the solicitor component here */}
+              <ul>
+                {staff.map((staff, index) => (
+                  <li key={index}>
+                    <span>
+                      {staff.name} - {staff.role} - {staff.specialisation} -{" "}
+                      {staff.email}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </GridLayout>
