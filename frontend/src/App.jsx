@@ -8,6 +8,7 @@ import Profile from './Pages/client/Profile/Profile';
 import CaseFile from './Pages/client/Case-File/CaseFile';
 import Contact from './Pages/client/Contact/Contact';
 import Fees from './Pages/client/Fees/Fees';
+import AdminDashboard from './Pages/admin/Dashboard/Dashboard';
 import Login from './Login/Login';
 import SignUp from './Login/Signup';
 import './App.css';
@@ -20,7 +21,8 @@ function App() {
     <div className="App">
       <Routes>
       <Route path="/login" element={<Login setAuthToken={setAuthToken}/>}/>
-        <Route path="/" element={<Dashboard/>} />
+        <Route path="/dash" element={<Dashboard/>} />
+        <Route path='/' element={<AdminDashboard/>}/>
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/feedback" element={<Feedback/>} />
         <Route path="/important-dates" element={<ImportantDates/>} />

@@ -45,7 +45,7 @@ function Dashboard() {
           <div key="updates-box" className="box">
             <div className="updates-box">
               <h2>Latest Updates</h2>
-              {/* Implement the updates component here */}
+              
             </div>
           </div>
           <div key="solicitor-box" className="box">
