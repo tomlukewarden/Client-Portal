@@ -9,6 +9,7 @@ import CaseFile from './Pages/client/Case-File/CaseFile';
 import Contact from './Pages/client/Contact/Contact';
 import Fees from './Pages/client/Fees/Fees';
 import AdminDashboard from './Pages/admin/Dashboard/Dashboard';
+import Clients from './Pages/admin/Clients/Clients';
 import Login from './Login/Login';
 import SignUp from './Login/Signup';
 import './App.css';
@@ -31,6 +32,7 @@ function App() {
         <Route path="/mailbox" element={<Mailbox/>} />
         <Route path="/profile" element={<Profile/>} />
         <Route path="/case-file" element={<CaseFile/>} />
+        <Route path='/admin-clients' element={<Clients/>}/>
       </Routes>
     </div>
   );

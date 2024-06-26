@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import GridLayout from 'react-grid-layout';
+import { Link } from 'react-router-dom';
 import './dashboard.css';
 
 function AdminNav() {
@@ -27,7 +28,7 @@ function Sidebar() {
     <aside className="admin-sidebar">
       <ul>
         <li>Dashboard</li>
-        <li>Clients</li>
+        <Link to="/c"><li>Clients</li></Link>
         <li>Cases</li>
         <li>Documents</li>
         <li>Settings</li>
