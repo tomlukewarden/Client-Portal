@@ -1,41 +1,10 @@
 import PropTypes from 'prop-types';
 import GridLayout from 'react-grid-layout';
-import { Link } from 'react-router-dom';
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
+import AdminNav from './components/AdminNav';
 import './dashboard.css';
 
-function AdminNav() {
-  return (
-    <nav className="admin-nav">
-      <div className="logo">Culley & McAlpine</div>
-    </nav>
-  );
-}
-
-function Header() {
-  return (
-    <header className="admin-header">
-      <h1>Admin Dashboard</h1>
-      <div className="header-controls">
-        <button>Notifications</button>
-        <button>Profile</button>
-      </div>
-    </header>
-  );
-}
-
-function Sidebar() {
-  return (
-    <aside className="admin-sidebar">
-      <ul>
-        <li>Dashboard</li>
-        <Link to="/c"><li>Clients</li></Link>
-        <li>Cases</li>
-        <li>Documents</li>
-        <li>Settings</li>
-      </ul>
-    </aside>
-  );
-}
 
 function Widget({ title, content }) {
   return (
